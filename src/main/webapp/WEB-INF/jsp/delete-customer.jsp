@@ -28,41 +28,12 @@
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="/login">Home</a></li>
                 <li class="breadcrumb-item"><a href="/customer/list">Manage Customers</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Save Customer</li>
+                <li class="breadcrumb-item active" aria-current="page">Delete Customer</li>
             </ol>
         </nav>
     </div>
 </header>
-<form action="/customer/saveCustomer" method="post" >
-
-    <div class="mb-3">
-        <label for="nic" class="form-label">NIC:</label>
-        <input type="text" pattern="^[1-9][0-9]{8}[Vv]$" id="nic" class="form-control" name="nic" value="${customer.nic}" required /><br/>
-    </div>
-
-
-    <div class="mb-3">
-        <label for="name" class="form-label">Name:</label>
-        <input type="text" id="name" pattern="^[A-Za-z ]+$" class="form-control" name="name" value="${customer.name}" required /><br/>
-    </div>
-
-    <div class="mb-3">
-        <label for="address" class="form-label">Address:</label>
-        <input type="text" id="address" class="form-control" name="address" value="${customer.address}" required/><br/>
-    </div>
-
-    <div class="mb-3">
-        <label for="mobileNumber" class="form-label">Mobile Number:</label>
-        <input type="text" pattern="^0[0-9]{9}$" id="mobileNumber" class="form-control" name="mobileNumber" value="${customer.mobileNumber}" /><br/>
-
-    </div>
-
-    <div class="d-flex gap-2 align-items-center">
-        <button type="submit" class="btn btn-success">SAVE</button>
-
-
-    </div>
-</form>
+    <h3 class="align-center">Customer Deleted Successfully!</h3>
 <br/>
 <form action="/customer/list" >
     <button type="submit" class="btn btn-success">BACK</button>

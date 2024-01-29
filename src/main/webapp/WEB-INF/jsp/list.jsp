@@ -27,7 +27,7 @@
     <div id="bread-crumb-container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="/login">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Manage Customers</li>
             </ol>
         </nav>
@@ -44,35 +44,6 @@
         </div>
     </form>
 
-
-<%--    <div class="gap-2">--%>
-
-<%--        <form action="/customer/viewCustomer/${nic}", method="get" >--%>
-<%--            <div class="gap-2">--%>
-<%--                <button type="submit" class="btn btn-success">View Customer</button>--%>
-<%--                <input type="text" id="nic" class="form-control" required name="nic" value="${customer.nic}" />--%>
-<%--            </div>--%>
-<%--        </form>--%>
-
-<%--        <form>--%>
-<%--            <div>--%>
-<%--                <button type="submit" class="btn btn-success">Update Customer</button>--%>
-<%--                <input type="text" id="nic-update" class="form-control" required name="nic" value="${customer.nic}" />--%>
-<%--            </div>--%>
-
-
-<%--        </form>--%>
-
-<%--        <form>--%>
-<%--            <button type="submit" class="btn btn-success">Delete Customer</button>--%>
-<%--            <input type="text" id="nic-delete" class="form-control" required name="nic" value="${customer.nic}" />--%>
-<%--        </form>--%>
-
-
-<%--    </div>--%>
-
-
-
     <div id="table-container">
 
 
@@ -82,7 +53,7 @@
             <th>Name</th>
             <th>Address</th>
             <th>Mobile No</th>
-<%--            <th>Action</th>--%>
+            <th>Action</th>
         </tr>
         <c:forEach items="${customers}" var="customer">
             <tr>
@@ -94,6 +65,7 @@
                     <a href="/customer/viewCustomer/${customer.nic}">View</a>
                     <a href="/customer/updateCustomer/${customer.nic}">Update</a>
                     <a href="/customer/deleteCustomer/${customer.nic}">Delete</a>
+
                 </td>
             </tr>
         </c:forEach>
@@ -101,7 +73,7 @@
     <div class="d-flex justify-content-center" id="pagination-container">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item disabled"><a class="page-link" href="/customer/list">Previous</a></li>
                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -113,10 +85,6 @@
     </div>
 
 </div>
-
-
-
-
 
 </body>
 </html>

@@ -26,20 +26,19 @@
     <div id="bread-crumb-container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Manage Customers</li>
+                <li class="breadcrumb-item"><a href="/login">Home</a></li>
+                <li class="breadcrumb-item"><a href="/customer/list">Manage Customers</a></li>
+                <li class="breadcrumb-item active" aria-current="page">View Customer</li>
             </ol>
         </nav>
     </div>
 </header>
 
 
-    <div class="align-items-center gap-2">
-<%--        <form method="get" action="/customer/viewCustomer/${customer.nic}">--%>
-<%--            <div class="d-flex gap-2 align-items-center">--%>
-<%--                <button type="submit" class="btn btn-success">VIEW</button>--%>
-<%--            </div>--%>
-            <table>
+<div id="table-container">
+
+
+    <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>NIC</th>
@@ -61,6 +60,11 @@
             </table>
 <%--        </form>--%>
     </div>
+
+<br/>
+<form action="/customer/list" >
+    <button type="submit" class="btn btn-success">BACK</button>
+</form>
 
 </body>
 </html>
