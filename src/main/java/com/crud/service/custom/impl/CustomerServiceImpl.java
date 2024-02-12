@@ -1,16 +1,15 @@
 package com.crud.service.custom.impl;
 
 import com.crud.entity.Customer;
+//import com.crud.exception.AppException;
 import com.crud.exception.AppException;
 import com.crud.repository.CustomerRepository;
 import com.crud.service.custom.CustomerService;
 import com.crud.service.util.Transformer;
 import com.crud.to.CustomerTO;
-import com.crud.to.request.CustomerRequestTO;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 

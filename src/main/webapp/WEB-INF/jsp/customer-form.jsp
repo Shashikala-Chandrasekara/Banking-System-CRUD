@@ -26,7 +26,7 @@
     <div id="bread-crumb-container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/login">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/customer/list">Manage Customers</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Save Customer</li>
             </ol>
@@ -58,6 +58,7 @@
     </div>
 
     <div class="d-flex gap-2 align-items-center">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-success">SAVE</button>
 
 

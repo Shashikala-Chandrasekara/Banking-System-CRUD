@@ -26,7 +26,7 @@
     <div id="bread-crumb-container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/login">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/customer/list">Manage Customers</a></li>
                 <li class="breadcrumb-item active" aria-current="page">View Customer</li>
             </ol>

@@ -1,16 +1,24 @@
 package com.crud.controller;
 
 import com.crud.entity.Customer;
+import com.crud.entity.User;
+import com.crud.repository.CustomerRepository;
+import com.crud.repository.UserRepository;
 import com.crud.service.custom.CustomerService;
+import com.crud.service.custom.UserService;
 import com.crud.to.CustomerTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +28,44 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String signInPage(){
+        return "welcome";
+    }
+
+    @RequestMapping(value = "/user/save", method = RequestMethod.POST)
+    public ResponseEntity<Object> saveUser(@RequestBody User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User result = userRepository.save(user);
+        if (result.getId() > 0){
+            return ResponseEntity.ok("User was saved");
+        }
+        return ResponseEntity.status(404).body("Error, User not saved");
+
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loadSignInPage(){
+        return "login";
+    }
+
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String loginPage(){
+//        return "welcome";
+//
+//    }
 
     @RequestMapping(value = "customer/list",method = RequestMethod.GET)
     public String listCustomers(Model model) {
@@ -28,6 +74,7 @@ public class CustomerController {
         return "list";
 
     }
+
 
     @RequestMapping(value = "/saveCustomer", method = RequestMethod.GET)
     public String showFormForAdd(Model model) {
@@ -66,6 +113,14 @@ public class CustomerController {
     public String deleteCustomer(@PathVariable String nic){
         customerService.deleteCustomer(nic);
         return "delete-customer";
+    }
+
+    public UserDetails getLoggedInUserDetails(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null && authentication.getPrincipal() instanceof UserDetails){
+            return (UserDetails) authentication.getPrincipal();
+        }
+        return null;
     }
 
 

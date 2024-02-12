@@ -26,7 +26,7 @@
     <div id="bread-crumb-container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/login">Home</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item"><a href="/customer/list">Manage Customers</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Update Customer</li>
             </ol>
@@ -34,7 +34,7 @@
     </div>
 </header>
 
-<form action="/customer/updateCustomer/{nic}" method="post" >
+<form action="/customer/updateCustomer/${customer.nic}" method="post" >
 
     <div class="mb-3 mx-auto p-0" style="width: 400px;">
         <label for="nic" class="form-label">NIC:</label>
@@ -59,6 +59,7 @@
     </div>
 
     <div class="d-flex gap-2 mx-auto p-0" style="width: 50px;">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-success">UPDATE</button>
 
 
@@ -84,17 +85,17 @@
                 </tr>
                 </thead>
                 <tbody>
-<%--                            <c:forEach items="${customers}}" var="customer">--%>
+
                 <tr>
                     <td>${customer.nic}</td>
                     <td>${customer.name}</td>
                     <td>${customer.address}</td>
                     <td>${customer.mobileNumber}</td>
                 </tr>
-<%--                            </c:forEach>--%>
+
                 </tbody>
             </table>
-<%--        </form>--%>
+
     </div>
 
 </body>
